@@ -5,7 +5,7 @@ use std::env;
 use std::process::exit;
 use std::thread;
 
-fn responed_as_file(mut stream: TcpStream, path: String) ->Result<(), std::io::Error>{
+fn responed_as_file(mut stream: TcpStream, path: &String) ->Result<(), std::io::Error>{
     let mut buffer = [0u8; 512];
 
     stream.read(&mut buffer)?;
@@ -40,7 +40,7 @@ fn main() -> std::io::Result<()>{
     let listener = TcpListener::bind(&args[2])?;
 
     for stream in listener.incoming(){
-        let responder = responed_as_file(stream.expect("ERRPR"), path.clone());
+        let responder = responed_as_file(stream.expect("ERRPR"), &path);
 
         thread::spawn(move || {
           responder.expect("ERROR");

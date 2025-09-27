@@ -76,8 +76,9 @@ fn main() {
     loop {
         print!("system@code~# ");
         let input = get_input();
+        let trimed = input.trim();
 
-        match input.as_str() {
+        match trimed {
             "create acc" => Auth::create_account(&mut auth),
             "delete acc" => Auth::delete_account(&mut auth),
             "login" => Auth::login(&mut auth),
@@ -102,3 +103,4 @@ fn get_input() -> String {
 
     return input;
 }
+

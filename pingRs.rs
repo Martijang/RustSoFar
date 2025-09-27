@@ -4,7 +4,7 @@ use std::env;
 use std::process::exit;
 use std::time::Duration;
 
-pub fn send_request(address: String, port: i32) -> Result<Duration, Box<dyn std::error::Error>>{
+fn send_request(address: String, port: i32) -> Result<Duration, Box<dyn std::error::Error>>{
     let now = std::time::Instant::now();
     let urls = format!("{}:{}", address, port);
     let addrs:Vec<_> = urls.to_socket_addrs()?.collect();
@@ -38,3 +38,4 @@ fn main() {
         exit(0)
     }
 }
+

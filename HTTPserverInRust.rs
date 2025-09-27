@@ -19,11 +19,9 @@ fn responed_as_file(mut stream: TcpStream, path: &String) ->Result<(), std::io::
             file
      ); 
         stream.write(response.as_bytes())?;
-        println!("Successfully responded");
     }else {
         //if any invaild request happens, send ERROR 404
         stream.write(b"HTTP/1.1 404 NOT FOUND\r\n\r\n <h1>404</h1> <p>NOT FOUND</p>")?;
-        println!("404 code sent");
     }
 
     Ok(())
@@ -49,3 +47,4 @@ fn main() -> std::io::Result<()>{
 
     Ok(())
 }
+

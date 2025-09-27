@@ -46,7 +46,7 @@ fn main() -> std::io::Result<()>{
     let listener = TcpListener::bind(&args[2]).unwrap();
 
     if args.len() > 2{
-        println!("Usage: ./<exe> <your_file_to_send> <Your IP and Port>");
+        println!("Usage: ./<exe> <your_file_to_send> <Your IP:Port>");
     }
 
     for stream in listener.incoming(){
@@ -58,4 +58,5 @@ fn main() -> std::io::Result<()>{
     }
 
     Ok(())
+
 }

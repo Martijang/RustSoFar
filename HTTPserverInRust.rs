@@ -6,9 +6,8 @@ use std::process::exit;
 use std::thread;
 
 fn responed_as_file(mut stream: TcpStream, path: &String) ->Result<(), std::io::Error>{
-    let mut buffer = [0u8; 512];
-
-    stream.read(&mut buffer)?;
+    let mut buffer = Box::new([0u8; 1024]);
+    stream.read(&mut buffer[..])?;
 
     let file = fs::read_to_string(path)?;
     let get = b"GET / HTTP/1.1\r\n";
@@ -47,4 +46,3 @@ fn main() -> std::io::Result<()>{
 
     Ok(())
 }
-

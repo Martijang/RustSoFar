@@ -1,4 +1,4 @@
-
+//No longer update. Moved to PingRs repository
 use std::net::{TcpStream, ToSocketAddrs};
 use std::env;
 use std::process::exit;
@@ -50,3 +50,4 @@ fn main() {
         exit(0)
     }
 }
+
